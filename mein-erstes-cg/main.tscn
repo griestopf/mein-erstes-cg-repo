@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://sk8xc3uncnhx" path="res://robot_export.glb" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b5aniq4xmur2o" path="res://robot.blend" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://ysgbxrlnj3yj" path="res://robot.gd" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://y6aqcktdxm70" path="res://kb_up.svg" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://d1073scdqgy0d" path="res://kb_down.svg" id="5_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -72,11 +74,37 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control" unique_id=44529413]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 706.0
-offset_bottom = 92.0
-text = "Up / Down: Rotate upper arm"
+offset_left = 132.0
+offset_top = 21.0
+offset_right = 813.0
+offset_bottom = 88.0
+text = "/      : Rotate upper arm"
 label_settings = SubResource("LabelSettings_h2yge")
+
+[node name="ButtonUp" type="Button" parent="Control" unique_id=243075851]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 26.0
+offset_right = 605.0
+offset_bottom = 546.0
+scale = Vector2(0.12539704, 0.125)
+text = "Up"
+icon = ExtResource("4_lquwl")
+flat = true
+
+[node name="ButtonDown" type="Button" parent="Control" unique_id=285632103]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 26.0
+offset_right = 701.0
+offset_bottom = 546.0
+scale = Vector2(0.12539704, 0.125)
+text = "Up"
+icon = ExtResource("5_7mycd")
+flat = true
+
+[connection signal="pressed" from="Control/ButtonUp" to="robot" method="_on_button_up_down"]
+[connection signal="button_down" from="Control/ButtonDown" to="robot" method="_on_button_down_down"]
+[connection signal="pressed" from="Control/ButtonDown" to="robot" method="_on_button_down_down"]
 
 [editable path="robot"]
