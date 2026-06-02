@@ -18,6 +18,9 @@ tonemap_mode = 2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7mycd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 48
+
 [node name="Main" type="Node3D" unique_id=1920523521]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=154569120]
@@ -60,5 +63,20 @@ script = ExtResource("3_lquwl")
 
 [node name="Hinge" parent="robot/Base" parent_id_path=PackedInt32Array(2135350098, 771741534) index="0" unique_id=764559487]
 transform = Transform3D(-4.676136e-09, 0.6048953, 0, -0.10697752, -2.6440812e-08, 0, 0, 0, 0.10697752, 0, 1.4368963, 0)
+
+[node name="Control" type="Control" parent="." unique_id=2084937766]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=44529413]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 706.0
+offset_bottom = 92.0
+text = "Up / Down: Rotate upper arm"
+label_settings = SubResource("LabelSettings_h2yge")
 
 [editable path="robot"]

@@ -9,7 +9,6 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(delta)
 	if Input.is_action_pressed("upper_arm_up"):
 		$Base/UpperArm.rotate_x(deg_to_rad(upper_arm_speed) * delta)
 	if Input.is_action_pressed("upper_arm_down"):
