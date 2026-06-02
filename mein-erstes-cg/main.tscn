@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://do7t0377s0b3f"]
+
+[ext_resource type="PackedScene" uid="uid://sk8xc3uncnhx" path="res://robot_export.glb" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b5aniq4xmur2o" path="res://robot.blend" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://ysgbxrlnj3yj" path="res://robot.gd" id="3_lquwl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7mycd"]
+
+[node name="Main" type="Node3D" unique_id=1920523521]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=154569120]
+environment = SubResource("Environment_lquwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1955970720]
+transform = Transform3D(-0.8660254, -0.410076, 0.28607297, 0, 0.5721459, 0.82015187, -0.50000006, 0.7102723, -0.49549285, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.25
+directional_shadow_max_distance = 20.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1757347957]
+transform = Transform3D(0.86112386, -0.21652842, 0.45997956, 0, 0.90476763, 0.42590567, -0.50839525, -0.3667575, 0.779117, 0.8037672, 3.1414504, 3.2119532)
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1300702987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(20, 0.5, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1859575992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3.5072699)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D" unique_id=2009856515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31587684, 0.48923373, -0.37369683)
+operation = 2
+radial_segments = 24
+rings = 12
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1521727061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.054, -5.1734757)
+mesh = SubResource("CapsuleMesh_7mycd")
+
+[node name="robot_export" parent="." unique_id=438221736 instance=ExtResource("1_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.343949, 0, -3.3139176)
+
+[node name="robot" parent="." unique_id=2135350098 instance=ExtResource("2_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1041238, 0, -1.9809029)
+script = ExtResource("3_lquwl")
+
+[node name="Hinge" parent="robot/Base" parent_id_path=PackedInt32Array(2135350098, 771741534) index="0" unique_id=764559487]
+transform = Transform3D(-4.676136e-09, 0.6048953, 0, -0.10697752, -2.6440812e-08, 0, 0, 0, 0.10697752, 0, 1.4368963, 0)
+
+[editable path="robot"]
